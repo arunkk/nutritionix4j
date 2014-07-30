@@ -13,8 +13,8 @@ import com.fitrax.nutritionix4j.client.NutritionixClientImpl;
 public class NutritionixProxyTest
 {
 
-	private final static String appId = "0841abfa";
-	private final static String appKey = "83c79fab0de91c3ce6ec1848e1aa0794";
+	private final static String appId = System.getenv("APPID");
+	private final static String appKey = System.getenv("APPKEY");
 
 	private static NutritionixClient proxy;
 
