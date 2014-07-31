@@ -7,7 +7,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.cache.CachingHttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
@@ -81,8 +80,8 @@ public class NutritionixClientImpl implements NutritionixClient
 	 * , java.lang.String, int, int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public SearchResults search(String phrase, String brand_id, int calorie_max,
-			int calorie_min, String resultsPage, String fields)
+	public SearchResults search(String phrase, String brand_id,
+			int calorie_max, int calorie_min, String resultsPage, String fields)
 	{
 
 		HttpGet httpget = null;
