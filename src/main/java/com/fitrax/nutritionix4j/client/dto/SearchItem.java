@@ -99,7 +99,7 @@ public class SearchItem
 	}
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-	public class Fields
+	public static class Fields
 	{
 
 		@JsonProperty("item_id")
