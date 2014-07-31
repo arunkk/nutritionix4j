@@ -1,153 +1,206 @@
 package com.fitrax.nutritionix4j.client.dto;
 
-/*
- *  {
- "_index": "f762ef22-e660-434f-9071-a10ea6691c27",
- "_type": "item",
- "_id": "513fc9cb673c4fbc2600536a",
- "_score": 3.9801846,
- "fields": {
- "item_id": "513fc9cb673c4fbc2600536a",
- "item_name": "Taco",
- "brand_id": "513fbc1283aa2dc80c000b96",
- "brand_name": "Taco Inn",
- "nf_serving_size_qty": 1,
- "nf_serving_size_unit": "serving"
- }
- */
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 public class SearchItem
 {
 
-	public static class Fields
-	{
-		public String item_id;
-		public String item_name;
-		public String brand_id;
-		public String brand_name;
-		public int nf_serving_size_qty;
-		public String nf_serving_size_unit;
-
-		public Fields()
-		{
-		}
-
-		public String getItem_id()
-		{
-			return item_id;
-		}
-
-		public void setItem_id(String item_id)
-		{
-			this.item_id = item_id;
-		}
-
-		public String getItem_name()
-		{
-			return item_name;
-		}
-
-		public void setItem_name(String item_name)
-		{
-			this.item_name = item_name;
-		}
-
-		public String getBrand_id()
-		{
-			return brand_id;
-		}
-
-		public void setBrand_id(String brand_id)
-		{
-			this.brand_id = brand_id;
-		}
-
-		public String getBrand_name()
-		{
-			return brand_name;
-		}
-
-		public void setBrand_name(String brand_name)
-		{
-			this.brand_name = brand_name;
-		}
-
-		public int getNf_serving_size_qty()
-		{
-			return nf_serving_size_qty;
-		}
-
-		public void setNf_serving_size_qty(int nf_serving_size_qty)
-		{
-			this.nf_serving_size_qty = nf_serving_size_qty;
-		}
-
-		public String getNf_serving_size_unit()
-		{
-			return nf_serving_size_unit;
-		}
-
-		public void setNf_serving_size_unit(String nf_serving_size_unit)
-		{
-			this.nf_serving_size_unit = nf_serving_size_unit;
-		}
-
-	}
-
-	private String _index;
-	private String _type;
-	private String _id;
-	private float _score;
-
+	@JsonProperty("_index")
+	private String index;
+	@JsonProperty("_type")
+	private String type;
+	@JsonProperty("_id")
+	private String id;
+	@JsonProperty("_score")
+	private double score;
+	@JsonProperty("fields")
 	private Fields fields;
+	@JsonIgnore
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	public String get_index()
+	@JsonProperty("_index")
+	public String getIndex()
 	{
-		return _index;
+		return index;
 	}
 
-	public void set_index(String _index)
+	@JsonProperty("_index")
+	public void setIndex(String index)
 	{
-		this._index = _index;
+		this.index = index;
 	}
 
-	public String get_type()
+	@JsonProperty("_type")
+	public String getType()
 	{
-		return _type;
+		return type;
 	}
 
-	public void set_type(String _type)
+	@JsonProperty("_type")
+	public void setType(String type)
 	{
-		this._type = _type;
+		this.type = type;
 	}
 
-	public String get_id()
+	@JsonProperty("_id")
+	public String getId()
 	{
-		return _id;
+		return id;
 	}
 
-	public void set_id(String _id)
+	@JsonProperty("_id")
+	public void setId(String id)
 	{
-		this._id = _id;
+		this.id = id;
 	}
 
-	public float get_score()
+	@JsonProperty("_score")
+	public double getScore()
 	{
-		return _score;
+		return score;
 	}
 
-	public void set_score(float _score)
+	@JsonProperty("_score")
+	public void setScore(double score)
 	{
-		this._score = _score;
+		this.score = score;
 	}
 
+	@JsonProperty("fields")
 	public Fields getFields()
 	{
 		return fields;
 	}
 
+	@JsonProperty("fields")
 	public void setFields(Fields fields)
 	{
 		this.fields = fields;
+	}
+
+	@JsonAnyGetter
+	public Map<String, Object> getAdditionalProperties()
+	{
+		return this.additionalProperties;
+	}
+
+	@JsonAnySetter
+	public void setAdditionalProperty(String name, Object value)
+	{
+		this.additionalProperties.put(name, value);
+	}
+
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	public class Fields
+	{
+
+		@JsonProperty("item_id")
+		private String itemId;
+		@JsonProperty("item_name")
+		private String itemName;
+		@JsonProperty("brand_id")
+		private String brandId;
+		@JsonProperty("brand_name")
+		private String brandName;
+		@JsonProperty("nf_serving_size_qty")
+		private int nfServingSizeQty;
+		@JsonProperty("nf_serving_size_unit")
+		private String nfServingSizeUnit;
+		@JsonIgnore
+		private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+		@JsonProperty("item_id")
+		public String getItemId()
+		{
+			return itemId;
+		}
+
+		@JsonProperty("item_id")
+		public void setItemId(String itemId)
+		{
+			this.itemId = itemId;
+		}
+
+		@JsonProperty("item_name")
+		public String getItemName()
+		{
+			return itemName;
+		}
+
+		@JsonProperty("item_name")
+		public void setItemName(String itemName)
+		{
+			this.itemName = itemName;
+		}
+
+		@JsonProperty("brand_id")
+		public String getBrandId()
+		{
+			return brandId;
+		}
+
+		@JsonProperty("brand_id")
+		public void setBrandId(String brandId)
+		{
+			this.brandId = brandId;
+		}
+
+		@JsonProperty("brand_name")
+		public String getBrandName()
+		{
+			return brandName;
+		}
+
+		@JsonProperty("brand_name")
+		public void setBrandName(String brandName)
+		{
+			this.brandName = brandName;
+		}
+
+		@JsonProperty("nf_serving_size_qty")
+		public int getNfServingSizeQty()
+		{
+			return nfServingSizeQty;
+		}
+
+		@JsonProperty("nf_serving_size_qty")
+		public void setNfServingSizeQty(int nfServingSizeQty)
+		{
+			this.nfServingSizeQty = nfServingSizeQty;
+		}
+
+		@JsonProperty("nf_serving_size_unit")
+		public String getNfServingSizeUnit()
+		{
+			return nfServingSizeUnit;
+		}
+
+		@JsonProperty("nf_serving_size_unit")
+		public void setNfServingSizeUnit(String nfServingSizeUnit)
+		{
+			this.nfServingSizeUnit = nfServingSizeUnit;
+		}
+
+		@JsonAnyGetter
+		public Map<String, Object> getAdditionalProperties()
+		{
+			return this.additionalProperties;
+		}
+
+		@JsonAnySetter
+		public void setAdditionalProperty(String name, Object value)
+		{
+			this.additionalProperties.put(name, value);
+		}
+
 	}
 
 }

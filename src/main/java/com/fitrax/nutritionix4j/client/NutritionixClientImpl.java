@@ -68,7 +68,7 @@ public class NutritionixClientImpl implements NutritionixClient
 	 * )
 	 */
 	@Override
-	public String search(String phrase)
+	public SearchResults search(String phrase)
 	{
 		return search(phrase, null, -1, -1, null, "*");
 	}
@@ -81,7 +81,7 @@ public class NutritionixClientImpl implements NutritionixClient
 	 * , java.lang.String, int, int, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public String search(String phrase, String brand_id, int calorie_max,
+	public SearchResults search(String phrase, String brand_id, int calorie_max,
 			int calorie_min, String resultsPage, String fields)
 	{
 
@@ -125,7 +125,7 @@ public class NutritionixClientImpl implements NutritionixClient
 				String payload = EntityUtils.toString(entity);
 				SearchResults results = mapper.readValue(payload,
 						SearchResults.class);
-				return mapper.writeValueAsString(results);
+				return results;
 			}
 
 		} catch (Exception e)
@@ -147,7 +147,7 @@ public class NutritionixClientImpl implements NutritionixClient
 	 * java.lang.String, java.lang.String)
 	 */
 	@Override
-	public String item(String id, String upc, String fields)
+	public Item item(String id, String upc, String fields)
 	{
 
 		HttpGet httpget = null;
@@ -184,7 +184,7 @@ public class NutritionixClientImpl implements NutritionixClient
 			{
 				String payload = EntityUtils.toString(entity);
 				Item item = mapper.readValue(payload, Item.class);
-				return mapper.writeValueAsString(item);
+				return item;
 			}
 
 		} catch (Exception e)
@@ -205,7 +205,7 @@ public class NutritionixClientImpl implements NutritionixClient
 	 * com.fitrax.nutritionix4j.client.NutritionixClient#brand(java.lang.String)
 	 */
 	@Override
-	public String brand(String brand_id)
+	public Brand brand(String brand_id)
 	{
 
 		HttpGet httpget = null;
@@ -234,7 +234,7 @@ public class NutritionixClientImpl implements NutritionixClient
 			{
 				String payload = EntityUtils.toString(entity);
 				Brand brand = mapper.readValue(payload, Brand.class);
-				return mapper.writeValueAsString(brand);
+				return brand;
 			} else
 			{
 				System.out.println(" Error! - " + response.getStatusLine());
