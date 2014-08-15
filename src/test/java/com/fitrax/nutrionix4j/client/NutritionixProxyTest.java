@@ -29,16 +29,13 @@ public class NutritionixProxyTest
 
 	private static ObjectMapper objMapper = new ObjectMapper();
 
-	@ClassRule
-	public static WireMockRule wireMockRule = new WireMockRule(8089);
-
 	@BeforeClass
 	public static void beforeClass()
 	{
 
 		NutritionixClientBuilder builder = NutritionixClientBuilder
 				.builder()
-				.setBaseUrl("http://127.0.0.1:8089/v1_1")
+				.setBaseUrl("https://api.nutritionix.com/v1_1")
 				.setAppId(
 						System.getenv("APPID") == null ? "mock" : System
 								.getenv("APPID"))
@@ -64,44 +61,48 @@ public class NutritionixProxyTest
 
 	}
 
-	@BeforeClass
-	public static void initializeMockUrls() throws JsonProcessingException
-	{
-		Item item = new Item();
-		item.setItemId("test_item");
-
-		stubFor(get(urlMatching("/v1_1/item.*")).willReturn(
-				aResponse().withStatus(200)
-						.withHeader("Content-Type", "application/json")
-						.withBody(objMapper.writeValueAsString(item))));
-
-		Brand brand = new Brand();
-		brand.setBrandId("test_brand");
-
-		stubFor(get(urlMatching("/v1_1/brand/.*")).willReturn(
-				aResponse().withStatus(200)
-						.withHeader("Content-Type", "application/json")
-						.withBody(objMapper.writeValueAsString(brand))));
-
-		SearchResults results = new SearchResults();
-		results.setTotal_hits(100);
-		brand.setBrandId("test_search");
-
-		stubFor(get(urlMatching("/v1_1/search/.*")).willReturn(
-				aResponse().withStatus(200)
-						.withHeader("Content-Type", "application/json")
-						.withBody(objMapper.writeValueAsString(results))));
-
-	}
+	// @BeforeClass
+	// public static void initializeMockUrls() throws JsonProcessingException
+	// {
+	// Item item = new Item();
+	// item.setItemId("test_item");
+	//
+	// stubFor(get(urlMatching("/v1_1/item.*")).willReturn(
+	// aResponse().withStatus(200)
+	// .withHeader("Content-Type", "application/json")
+	// .withBody(objMapper.writeValueAsString(item))));
+	//
+	// Brand brand = new Brand();
+	// brand.setBrandId("test_brand");
+	//
+	// stubFor(get(urlMatching("/v1_1/brand/.*")).willReturn(
+	// aResponse().withStatus(200)
+	// .withHeader("Content-Type", "application/json")
+	// .withBody(objMapper.writeValueAsString(brand))));
+	//
+	// SearchResults results = new SearchResults();
+	// results.setTotal_hits(100);
+	// brand.setBrandId("test_search");
+	//
+	// stubFor(get(urlMatching("/v1_1/search/.*")).willReturn(
+	// aResponse().withStatus(200)
+	// .withHeader("Content-Type", "application/json")
+	// .withBody(objMapper.writeValueAsString(results))));
+	//
+	// }
 
 	@Test
-	public void testSearch()
+	public void testSearch() throws JsonProcessingException
 	{
 		SearchResults response = proxy.search("yogurt");
 
 		assertNotNull(response);
 
-		System.out.println(" Response is " + response);
+		System.out.println(" Search results max " + response.getTotal_hits());
+		System.out.println(" Search results length "
+				+ response.getHits().length);
+		// System.out.println(" Response is " +
+		// objMapper.writeValueAsString(response));
 	}
 
 	@Test
